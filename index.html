@@ -1,508 +1,867 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>أمان AI | الحماية الرقمية</title>
-<style>
-:root {
-  --navy:#103B55; --teal:#167783; --bg:#F1F6F9;
-  --text:#142D3A; --white:#fff; --line:#D7E5EA;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0; font-family:Tahoma,Arial,sans-serif;
-  background:var(--bg); color:var(--text); line-height:1.8;
-}
-header {
-  padding:35px 20px; color:white;
-  background:linear-gradient(125deg,#09283C,var(--navy),var(--teal));
-}
-.container { max-width:1050px; margin:auto; }
-.brand { font-size:23px; font-weight:bold; }
-header h1 { font-size:clamp(27px,5vw,40px); margin:25px 0 8px; }
-header p { color:#E1EDF2; max-width:650px; }
-.badge {
-  display:inline-block; border:1px solid #ffffff66;
-  border-radius:30px; padding:5px 12px; font-size:13px;
-}
-main { max-width:1050px; margin:25px auto; padding:0 16px; }
-.notice {
-  background:#E8F4F6; border-right:4px solid var(--teal);
-  padding:15px; border-radius:12px; margin-bottom:20px;
-}
-.layout { display:grid; grid-template-columns:1.4fr .8fr; gap:18px; }
-.card {
-  background:white; border:1px solid var(--line);
-  border-radius:18px; padding:22px; margin-bottom:18px;
-  box-shadow:0 6px 22px #103B5510;
-}
-h2 { margin-top:0; font-size:21px; }
-.muted { color:#607783; font-size:14px; }
-textarea,select,input {
-  width:100%; padding:12px; border:1px solid #C8D8E0;
-  border-radius:10px; font:15px Tahoma,Arial,sans-serif;
-  background:#FCFEFF; color:var(--text);
-}
-textarea { min-height:150px; resize:vertical; }
-label { display:block; font-size:13px; font-weight:bold; margin-bottom:6px; }
-.options { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
-button {
-  border:0; border-radius:10px; padding:12px 15px;
-  cursor:pointer; font:bold 14px Tahoma,Arial,sans-serif;
-}
-button:hover { opacity:.88; }
-.primary { background:var(--navy); color:white; }
-.secondary { background:#D9F2EE; color:#123E5A; }
-.ghost { background:white; border:1px solid #C8D8E0; color:var(--text); }
-.actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-.actions button { flex:1; }
-.samples { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
-.sample { text-align:right; background:#F1F7F9; color:var(--text); border:1px solid var(--line); }
-.sample small { display:block; font-weight:normal; color:#607783; }
-.result {
-  display:none; margin-top:18px; border:1px solid var(--line);
-  border-radius:14px; padding:17px; overflow-wrap:anywhere;
-}
-.result-head { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
-.status { border-radius:20px; padding:4px 12px; font-size:13px; font-weight:bold; }
-.low { background:#DFF4E7; color:#17643A; }
-.medium { background:#FFF0CB; color:#795000; }
-.high { background:#FFE0DF; color:#942D2B; }
-.meter { height:8px; background:#E5EDF0; border-radius:20px; margin-top:14px; overflow:hidden; }
-.meter span { display:block; height:100%; }
-.advice { background:#EFF7F8; padding:12px; border-radius:10px; margin-top:12px; }
-.stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); }
-.stat:last-child { border:0; }
-.tips li { margin-bottom:8px; }
-.history-item { border-top:1px solid var(--line); padding:12px 0; overflow-wrap:anywhere; }
-footer { text-align:center; color:#607783; padding:22px; font-size:12px; }
-@media(max-width:760px) {
-  .layout { grid-template-columns:1fr; }
-  .options,.samples { grid-template-columns:1fr; }
-  .card { padding:17px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أمان AI | الحماية من الاحتيال الإلكتروني</title>
+  <style>
+    :root {
+      --navy: #103b55;
+      --teal: #168b91;
+      --light: #f3f8fa;
+      --white: #ffffff;
+      --text: #183746;
+      --muted: #647984;
+      --border: #dce7ec;
+      --red: #c83d4d;
+      --orange: #d88a22;
+      --green: #21845b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    button, textarea, input, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 17px;
+      background: var(--navy);
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 48px 20px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #103b55, #168b91);
+    }
+
+    .hero .logo {
+      font-size: 48px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin: 8px 0;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e4f5f7;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: 28px auto;
+    }
+
+    .notice {
+      padding: 14px 18px;
+      background: #e8f4f5;
+      border-right: 5px solid var(--teal);
+      border-radius: 12px;
+      margin-bottom: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 5px 20px #173e5010;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: var(--navy);
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 12px 0 6px;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbdbe2;
+      border-radius: 10px;
+      background: white;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .secondary {
+      background: #e8f2f5;
+      color: var(--navy);
+    }
+
+    .teal {
+      background: var(--teal);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f9fcfd;
+    }
+
+    .risk {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .meter {
+      height: 12px;
+      background: #e5edf0;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+
+    .meter-fill {
+      width: 0;
+      height: 100%;
+      background: var(--teal);
+      transition: width 0.4s;
+    }
+
+    .indicator-list {
+      padding-right: 22px;
+    }
+
+    .samples {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .sample {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fbfdfe;
+    }
+
+    .sample button {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feedback {
+      padding: 12px;
+      background: #eff7f8;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    .history-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      overflow-wrap: anywhere;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 15px;
+      border-radius: 12px;
+      background: #eff7f8;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 27px;
+      color: var(--navy);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    footer {
+      padding: 28px 15px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .grid, .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .samples {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div class="container">
-    <div class="brand">🛡️ أمان AI</div>
-    <h1>خذي لحظة قبل ما تضغطين</h1>
-    <p>مساعد توعوي يساعدك على ملاحظة مؤشرات الاحتيال الإلكتروني في الرسائل العربية.</p>
-    <span class="badge">نموذج أولي تعليمي</span>
-  </div>
-</header>
+  <header class="hero">
+    <div class="logo">🛡️</div>
+    <h1>أمان AI</h1>
+    <p>
+      منصة توعوية تساعد على اكتشاف المؤشرات المحتملة للاحتيال الإلكتروني
+      وفهم الرسائل المشبوهة بطريقة بسيطة وتفاعلية.
+    </p>
+  </header>
 
-<main>
-  <div class="notice">
-    <strong>تنبيه:</strong>
-    يعتمد هذا النموذج على قواعد وكلمات مفتاحية محددة مسبقًا.
-    نتائجه تقديرية ولا تثبت أن الرسالة احتيالية أو آمنة.
-    لا تدخلي أي معلومات شخصية أو سرية.
-  </div>
+  <main class="container">
+    <div class="notice">
+      <strong>تنبيه:</strong>
+      هذا نموذج توعوي تجريبي يعتمد على قواعد نصية، وليس نظام ذكاء اصطناعي
+      مدرّبًا أو أداة تضمن اكتشاف جميع عمليات الاحتيال.
+    </div>
 
-  <div class="layout">
-    <section class="card">
-      <h2>🔎 تحليل الرسائل</h2>
-      <p class="muted">الصقي نص الرسالة التي تريدين فحصها.</p>
-      <textarea id="message" placeholder="اكتبي الرسالة هنا..."></textarea>
+    <div class="actions">
+      <button class="secondary" onclick="togglePresentation()">
+        🎤 وضع العرض
+      </button>
+      <button class="secondary" onclick="scrollToSection('quiz')">
+        🧠 الاختبار التوعوي
+      </button>
+      <button class="secondary" onclick="scrollToSection('comparison')">
+        ⚖️ مقارنة الرسائل
+      </button>
+    </div>
 
-      <div class="options">
-        <div>
-          <label for="sensitivity">حساسية التنبيه</label>
-          <select id="sensitivity">
-            <option value="standard">متوازنة</option>
-            <option value="high">مرتفعة</option>
-            <option value="low">منخفضة</option>
-          </select>
+    <section class="grid">
+      <article class="card">
+        <h2>🔍 فحص رسالة</h2>
+        <p class="muted">
+          أدخلي نص الرسالة لتحليل الكلمات والعبارات التي قد تستدعي الانتباه.
+        </p>
+
+        <label for="message">نص الرسالة</label>
+        <textarea id="message" placeholder="الصقي الرسالة هنا..."></textarea>
+
+        <label for="messageType">نوع الرسالة</label>
+        <select id="messageType">
+          <option value="عام">رسالة عامة</option>
+          <option value="بنكي">رسالة بنكية</option>
+          <option value="توصيل">رسالة توصيل</option>
+          <option value="جائزة">جائزة أو عرض</option>
+          <option value="حساب">حساب إلكتروني</option>
+        </select>
+
+        <div class="actions">
+          <button class="teal" onclick="analyzeMessage()">
+            تحليل الرسالة
+          </button>
+          <button class="secondary" onclick="clearMessage()">
+            مسح
+          </button>
+          <button class="secondary" onclick="copyMessage()">
+            نسخ النص
+          </button>
         </div>
-        <div>
-          <label for="type">نوع الرسالة</label>
-          <select id="type">
-            <option value="all">جميع الأنواع</option>
-            <option value="bank">بنكية ومالية</option>
-            <option value="delivery">شحن وتوصيل</option>
-            <option value="prize">جوائز وعروض</option>
-            <option value="account">حسابات ورموز تحقق</option>
-          </select>
+
+        <div id="analysisResult" class="result" aria-live="polite">
+          <div id="riskLabel" class="risk"></div>
+          <div id="riskDescription"></div>
+          <div class="meter">
+            <div id="meterFill" class="meter-fill"></div>
+          </div>
+          <p id="scoreText" class="muted"></p>
+          <h3>المؤشرات المكتشفة</h3>
+          <ul id="indicatorList" class="indicator-list"></ul>
+          <p id="advice"></p>
+          <button class="secondary" onclick="saveResult()">
+            حفظ في سجل الجلسة
+          </button>
         </div>
-      </div>
+      </article>
 
-      <div class="actions">
-        <button class="primary" id="analyze">تحليل الرسالة</button>
-        <button class="ghost" id="clear">مسح</button>
-        <button class="secondary" id="copy">نسخ التقرير</button>
-      </div>
+      <aside>
+        <article class="card">
+          <h2>📊 إحصائيات الجلسة</h2>
+          <div class="stats">
+            <div class="stat">
+              <strong id="totalCount">0</strong>
+              <span class="muted">عمليات الفحص</span>
+            </div>
+            <div class="stat">
+              <strong id="highCount">0</strong>
+              <span class="muted">مخاطر مرتفعة</span>
+            </div>
+            <div class="stat">
+              <strong id="savedCount">0</strong>
+              <span class="muted">نتائج محفوظة</span>
+            </div>
+          </div>
+          <p class="muted">
+            الإحصائيات مؤقتة داخل الصفحة، ولا تُرسل الرسائل إلى خادم خارجي.
+          </p>
+        </article>
 
-      <h3>🧪 أمثلة للتجربة</h3>
-      <div class="samples" id="samples"></div>
-      <div class="result" id="result" aria-live="polite"></div>
+        <article class="card">
+          <h2>💡 نصائح للحماية</h2>
+          <ul>
+            <li>لا تشاركي كلمة المرور أو رمز التحقق.</li>
+            <li>لا تضغطي الروابط غير الموثوقة.</li>
+            <li>تحققي من الجهة عبر موقعها أو تطبيقها الرسمي.</li>
+            <li>لا تدفعي رسومًا بناءً على رسالة غير مؤكدة.</li>
+            <li>عند الشك، تواصلي مع الجهة من قناة موثوقة.</li>
+          </ul>
+        </article>
+      </aside>
     </section>
 
-    <aside>
-      <section class="card">
-        <h2>📊 إحصاءات الجلسة</h2>
-        <div class="stat"><span>عدد التحليلات</span><strong id="total">0</strong></div>
-        <div class="stat"><span>تنبيهات مرتفعة</span><strong id="highCount">0</strong></div>
-        <div class="stat"><span>تنبيهات متوسطة</span><strong id="mediumCount">0</strong></div>
-        <div class="stat"><span>تنبيهات منخفضة</span><strong id="lowCount">0</strong></div>
-        <p class="muted">الإحصاءات لهذه الجلسة فقط.</p>
-      </section>
+    <section class="card">
+      <h2>🧪 جرّبي أمثلة جاهزة</h2>
+      <p class="muted">اختاري مثالًا لتعبئة مربع الفحص.</p>
 
-      <section class="card">
-        <h2>🛡️ نصائح للحماية</h2>
-        <ul class="tips">
-          <li>لا تشاركي رمز التحقق أو كلمة المرور.</li>
-          <li>لا تفتحي الروابط غير الموثوقة.</li>
-          <li>تحققي من المرسل من خلال قناة رسمية.</li>
-          <li>لا تدفعي رسومًا بسبب رسالة مشبوهة دون تحقق.</li>
-        </ul>
-      </section>
-    </aside>
-  </div>
+      <div class="samples">
+        <div class="sample">
+          <strong>مثال 1: رمز تحقق</strong>
+          <p>أرسل رمز التحقق وكلمة المرور فورًا لتجنب إيقاف حسابك.</p>
+          <button class="secondary" onclick="useSample(0)">جرّبي المثال</button>
+        </div>
 
-  <section class="card">
-    <h2>📁 سجل التحليلات</h2>
-    <p class="muted">السجل مؤقت ولا يُحفظ بعد إعادة تحميل الصفحة.</p>
-    <div class="actions">
-      <button class="secondary" id="export">تصدير CSV</button>
-      <button class="ghost" id="clearHistory">مسح السجل</button>
-    </div>
-    <div id="history"><p class="muted">لم تُحلّل أي رسالة بعد.</p></div>
-  </section>
+        <div class="sample">
+          <strong>مثال 2: رسوم توصيل</strong>
+          <p>ادفعي رسوم الاستلام عبر الرابط المرفق لتأكيد شحنتك.</p>
+          <button class="secondary" onclick="useSample(1)">جرّبي المثال</button>
+        </div>
 
-  <section class="card">
-    <h2>ℹ️ عن المشروع</h2>
-    <p>يهدف أمان AI إلى رفع الوعي بمؤشرات الاحتيال الإلكتروني عبر واجهة عربية سهلة الاستخدام.</p>
-    <p><strong>المنهج الحالي:</strong> مطابقة كلمات وعبارات محددة مسبقًا.</p>
-    <p><strong>التطوير القادم:</strong> اختبار النموذج على رسائل متنوعة، وتوثيق الأخطاء، ثم تقييم إمكانية ربط نموذج تعلم آلي مدرّب.</p>
-  </section>
-</main>
-
-<footer>
-  أمان AI — مشروع توعوي أولي. لا يعتمد عليه وحده لاتخاذ قرارات أمنية.
-</footer>
-
-<script>
-const $ = id => document.getElementById(id);
-
-const examples = [
-  {
-    name:"🚨 إيقاف الحساب",
-    hint:"رسالة مستعجلة",
-    text:"عاجل! سيتم إيقاف حسابك خلال دقائق، اضغط الرابط لتحديث بياناتك."
-  },
-  {
-    name:"🎁 جائزة وهمية",
-    hint:"طلب رسوم",
-    text:"مبروك ربحت جائزة كبيرة! ادفع رسوم الاستلام الآن لتحصل عليها."
-  },
-  {
-    name:"🔐 رمز تحقق",
-    hint:"طلب بيانات سرية",
-    text:"أرسل رمز التحقق وكلمة المرور لتأكيد هويتك فورًا."
-  },
-  {
-    name:"📦 شحنة",
-    hint:"طلب بيانات توصيل",
-    text:"لديك شحنة متوقفة، اضغط الرابط للتحقق من بيانات التوصيل."
-  },
-  {
-    name:"💳 بيانات بنكية",
-    hint:"طلب معلومات مالية",
-    text:"يرجى إدخال رقم البطاقة وبياناتك البنكية لاستكمال الطلب."
-  },
-  {
-    name:"💬 رسالة عادية",
-    hint:"رسالة اجتماع",
-    text:"السلام عليكم، تذكير بموعد اجتماع الفريق غدًا الساعة العاشرة صباحًا."
-  },
-  {
-    name:"📱 تحديث تطبيق",
-    hint:"رابط غير موضح المصدر",
-    text:"حدّث التطبيق عبر هذا الرابط وأدخل بيانات حسابك لمواصلة الاستخدام."
-  },
-  {
-    name:"🏦 تنبيه بنكي",
-    hint:"طلب بيانات الدخول",
-    text:"تم تعليق حسابك البنكي، أرسل كلمة المرور ورمز التحقق لاستعادته."
-  },
-  {
-    name:"🧾 فاتورة مستحقة",
-    hint:"مطالبة بالدفع",
-    text:"فاتورتك مستحقة الآن، ادفع فورًا لتجنب إيقاف الخدمة."
-  }
-];
-
-const rules = [
-  {
-    name:"طلب رمز تحقق أو كلمة مرور",
-    words:["رمز التحقق","رمز التأكيد","رمز الدخول","كلمة المرور","الرقم السري","otp","password","رمز التفعيل"]
-  },
-  {
-    name:"استعجال أو تهديد",
-    words:["عاجل","فورا","خلال دقائق","إيقاف حسابك","اغلاق حسابك","آخر فرصة","حسابك معلق","بسرعة"]
-  },
-  {
-    name:"جائزة أو مكافأة غير متوقعة",
-    words:["ربحت جائزة","مبروك ربحت","استلام جائزتك","فزت بجائزة","جائزة كبيرة","مكافأة مجانية"]
-  },
-  {
-    name:"طلب أموال أو رسوم",
-    words:["حول المال","حول المبلغ","رسوم الاستلام","ادفع رسوم","أرسل المال","رسوم التوصيل","ادفع فورًا"]
-  },
-  {
-    name:"طلب بيانات شخصية أو مالية",
-    words:["رقم البطاقة","بياناتك البنكية","رقم هويتك","أدخل بياناتك","رقم الحساب البنكي","بيانات الحساب"]
-  },
-  {
-    name:"رابط يحتاج إلى تحقق",
-    words:["http://","https://","www.","اضغط الرابط","اضغط هنا","افتح الرابط","رابط التحقق"]
-  },
-  {
-    name:"انتحال جهة أو شركة",
-    words:["تحديث بيانات البنك","حسابك البنكي","خدمة العملاء","الدعم الفني","تأكيد هويتك","شحنة متوقفة"]
-  },
-  {
-    name:"عرض غير واقعي أو طلب السرية",
-    words:["ربح مضمون","مبلغ مضمون","لا تخبر أحدا","سرية تامة","فرصة لا تعوض","استثمار مضمون"]
-  }
-];
-
-const history = [];
-let counts = {total:0, high:0, medium:0, low:0};
-
-function normalize(text) {
-  return text.toLowerCase().normalize("NFKC")
-    .replace(/[\u064B-\u065F\u0670]/g,"")
-    .replace(/\u0640/g,"")
-    .replace(/[أإآٱ]/g,"ا")
-    .replace(/ى/g,"ي")
-    .replace(/\s+/g," ").trim();
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[char]);
-}
-
-function analyze(text) {
-  const clean = normalize(text);
-  const warnings = [];
-
-  rules.forEach(rule => {
-    if (rule.words.some(word => clean.includes(normalize(word)))) {
-      warnings.push(rule.name);
-    }
-  });
-
-  const selectedType = $("type").value;
-  const typeWords = {
-    bank:["بنك","بنكي","بطاقة","بيانات مالية","فاتورة","ادفع"],
-    delivery:["شحنة","توصيل","طرد","مندوب","شحن"],
-    prize:["جائزة","ربحت","مبروك","مكافأة","سحب"],
-    account:["حسابك","رمز التحقق","كلمة المرور","كلمة السر","رمز الدخول"]
-  };
-
-  const matchesType = selectedType === "all" ||
-    typeWords[selectedType].some(word => clean.includes(normalize(word)));
-
-  const sensitivity = $("sensitivity").value;
-  const threshold = sensitivity === "high" ? 2 :
-                    sensitivity === "low" ? 4 : 3;
-
-  let risk = "منخفض";
-  let level = "low";
-
-  if (warnings.length >= threshold) {
-    risk = "مرتفع";
-    level = "high";
-  } else if (warnings.length > 0) {
-    risk = "متوسط";
-    level = "medium";
-  }
-
-  let advice = warnings.length
-    ? "لا تضغطي على الروابط ولا تشاركي رموز التحقق أو البيانات المالية. تحققي من الجهة عبر قناة رسمية."
-    : "لم تظهر مؤشرات ضمن القواعد الحالية، لكن هذا لا يثبت أن الرسالة آمنة. تحققي من المرسل إذا ساورك الشك.";
-
-  if (!matchesType && selectedType !== "all") {
-    advice = "الرسالة لا تطابق بوضوح النوع المختار. اختاري «جميع الأنواع» لفحص أوسع.";
-  }
-
-  return {
-    risk, level, warnings, advice,
-    matchesType,
-    selectedType
-  };
-}
-
-function renderResult(text, result, save = true) {
-  const score = result.level === "high" ? 85 :
-                result.level === "medium" ? 52 : 18;
-
-  const resultBox = $("result");
-  resultBox.style.display = "block";
-
-  const warningsHTML = result.warnings.length
-    ? "<ul>" + result.warnings.map(w => `<li>${escapeHTML(w)}</li>`).join("") + "</ul>"
-    : '<p class="muted">لم تُكتشف مؤشرات ضمن القواعد الحالية.</p>';
-
-  resultBox.innerHTML = `
-    <div class="result-head">
-      <strong>نتيجة الفحص التقديري</strong>
-      <span class="status ${result.level}">${escapeHTML(result.risk)}</span>
-    </div>
-    <div class="meter"><span style="width:${score}%;background:${
-      result.level === "high" ? "#C84A47" :
-      result.level === "medium" ? "#D29A24" : "#2C9A62"
-    }"></span></div>
-    <p class="muted">المؤشر بصري توضيحي وليس نسبة احتمال أو دقة.</p>
-    <h3>المؤشرات المكتشفة (${result.warnings.length})</h3>
-    ${warningsHTML}
-    <div class="advice"><strong>النصيحة:</strong> ${escapeHTML(result.advice)}</div>
-    <p class="muted">هذا تقييم أولي قائم على كلمات مفتاحية، وليس حكمًا مؤكدًا على الرسالة.</p>
-  `;
-
-  if (save && text.trim()) {
-    history.unshift({
-      message:text,
-      risk:result.risk,
-      warnings:result.warnings.join("؛ "),
-      advice:result.advice,
-      time:new Date().toLocaleString("ar-SA")
-    });
-
-    const key = result.level === "high" ? "high" :
-                result.level === "medium" ? "medium" : "low";
-    counts.total++;
-    counts[key]++;
-    renderHistory();
-    renderStats();
-  }
-}
-
-function renderStats() {
-  $("total").textContent = counts.total;
-  $("highCount").textContent = counts.high;
-  $("mediumCount").textContent = counts.medium;
-  $("lowCount").textContent = counts.low;
-}
-
-function renderHistory() {
-  $("history").innerHTML = history.length
-    ? history.map(item => `
-      <div class="history-item">
-        <strong>${escapeHTML(item.risk)}</strong>
-        <p>${escapeHTML(item.message)}</p>
-        <small class="muted">${escapeHTML(item.time)}</small>
-        <p class="muted">${escapeHTML(item.warnings || "لا توجد مؤشرات مطابقة")}</p>
+        <div class="sample">
+          <strong>مثال 3: موعد اجتماع</strong>
+          <p>تذكير بموعد اجتماع الفريق غدًا الساعة العاشرة صباحًا.</p>
+          <button class="secondary" onclick="useSample(2)">جرّبي المثال</button>
+        </div>
       </div>
-    `).join("")
-    : '<p class="muted">لم تُحلّل أي رسالة بعد.</p>';
-}
+    </section>
 
-examples.forEach((example,index) => {
-  const button = document.createElement("button");
-  button.className = "sample";
-  button.innerHTML = `${example.name}<small>${example.hint}</small>`;
-  button.addEventListener("click", () => {
-    $("message").value = example.text;
-    renderResult(example.text, analyze(example.text));
-  });
-  $("samples").appendChild(button);
-});
+    <section id="quiz" class="card">
+      <h2>🧠 الاختبار التوعوي</h2>
+      <p id="quizQuestion">
+        وصلتك رسالة تطلب رمز التحقق وكلمة المرور. ما التصرف الأفضل؟
+      </p>
+      <div id="quizOptions">
+        <button class="secondary" onclick="answerQuiz(false)">
+          أرسل البيانات لأنها تبدو رسمية
+        </button>
+        <button class="secondary" onclick="answerQuiz(true)">
+          أتحقق من المصدر الرسمي ولا أشارك الرمز
+        </button>
+        <button class="secondary" onclick="answerQuiz(false)">
+          أعيد إرسال الرسالة لأشخاص آخرين
+        </button>
+      </div>
+      <div id="quizFeedback" class="feedback" aria-live="polite">
+        اختاري إجابة لمعرفة التفسير.
+      </div>
+      <div class="actions">
+        <button onclick="nextQuestion()">السؤال التالي</button>
+        <button class="secondary" onclick="resetQuiz()">إعادة الاختبار</button>
+        <span id="quizScore" style="margin:auto 0">النقاط: 0</span>
+      </div>
+    </section>
 
-$("analyze").addEventListener("click", () => {
-  const text = $("message").value.trim();
-  if (!text) {
-    alert("اكتبي نص الرسالة أولًا.");
-    return;
-  }
-  renderResult(text, analyze(text));
-});
+    <section id="comparison" class="card">
+      <h2>⚖️ مقارنة رسالتين</h2>
+      <p class="muted">
+        تقارن الأداة بين مؤشرات الكلمات الموجودة في كل رسالة. لا يمكنها
+        تأكيد أن الرسالة احتيالية أو آمنة بشكل قاطع.
+      </p>
 
-$("clear").addEventListener("click", () => {
-  $("message").value = "";
-  $("result").style.display = "none";
-  $("message").focus();
-});
+      <div class="two-columns">
+        <div>
+          <label for="messageA">الرسالة الأولى</label>
+          <textarea id="messageA">أرسل رمز التحقق فورًا لتجنب إيقاف حسابك.</textarea>
+          <button class="teal" onclick="compareMessages()">قارن الرسالتين</button>
+        </div>
+        <div>
+          <label for="messageB">الرسالة الثانية</label>
+          <textarea id="messageB">تذكير بموعد اجتماع الفريق غدًا.</textarea>
+        </div>
+      </div>
+      <div id="comparisonResult" class="feedback hidden" aria-live="polite"></div>
+    </section>
 
-$("sensitivity").addEventListener("change", () => {
-  const text = $("message").value.trim();
-  if (text) renderResult(text, analyze(text), false);
-});
+    <section class="card">
+      <h2>🗂️ سجل نتائج الفحص</h2>
+      <div class="actions">
+        <button class="secondary" onclick="exportHistory()">تصدير CSV</button>
+        <button class="secondary" onclick="clearHistory()">مسح السجل</button>
+      </div>
+      <div id="historyList">
+        <p class="muted">لا توجد نتائج محفوظة حتى الآن.</p>
+      </div>
+    </section>
 
-$("type").addEventListener("change", () => {
-  const text = $("message").value.trim();
-  if (text) renderResult(text, analyze(text), false);
-});
+    <section class="card">
+      <h2>🎯 أهداف المشروع</h2>
+      <ul>
+        <li>نشر الوعي بمؤشرات الاحتيال الإلكتروني.</li>
+        <li>تشجيع المستخدم على التحقق من الرسائل قبل التفاعل معها.</li>
+        <li>تقديم تجربة تعليمية سهلة باللغة العربية.</li>
+        <li>توضيح أن التحليل الآلي مؤشر مساعد وليس حكمًا نهائيًا.</li>
+      </ul>
+      <h3>آلية العمل</h3>
+      <p>
+        يفحص النموذج النص بحثًا عن عبارات مثل طلب رمز التحقق أو كلمة المرور
+        أو الدفع العاجل. ثم يعرض مؤشرات ونصائح عامة للمستخدم.
+      </p>
+    </section>
+  </main>
 
-$("copy").addEventListener("click", async () => {
-  const text = $("message").value.trim();
-  if (!text) {
-    alert("اكتبي رسالة وحلّليها أولًا.");
-    return;
-  }
+  <footer>
+    أمان AI — نموذج توعوي تجريبي للأمن الرقمي
+  </footer>
 
-  const result = analyze(text);
-  const report =
-    `تقرير أمان AI\n` +
-    `الرسالة: ${text}\n` +
-    `التصنيف التقديري: ${result.risk}\n` +
-    `المؤشرات: ${result.warnings.join("، ") || "لا توجد مؤشرات مطابقة"}\n` +
-    `النصيحة: ${result.advice}\n` +
-    `ملاحظة: نتيجة أولية وليست حكمًا مؤكدًا.`;
+  <script>
+    const $ = id => document.getElementById(id);
 
-  try {
-    await navigator.clipboard.writeText(report);
-    alert("تم نسخ التقرير.");
-  } catch {
-    const temp = document.createElement("textarea");
-    temp.value = report;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand("copy");
-    temp.remove();
-    alert("تم تجهيز التقرير للنسخ.");
-  }
-});
+    const samples = [
+      "أرسل رمز التحقق وكلمة المرور فورًا لتجنب إيقاف حسابك.",
+      "ادفعي رسوم الاستلام عبر الرابط المرفق لتأكيد شحنتك.",
+      "تذكير بموعد اجتماع الفريق غدًا الساعة العاشرة صباحًا."
+    ];
 
-$("clearHistory").addEventListener("click", () => {
-  history.length = 0;
-  counts = {total:0, high:0, medium:0, low:0};
-  renderHistory();
-  renderStats();
-});
+    const indicators = [
+      {
+        words: ["رمز التحقق", "رمز التأكيد", "رمز الدخول", "otp"],
+        label: "طلب رمز التحقق",
+        points: 3
+      },
+      {
+        words: ["كلمة المرور", "الرقم السري", "بيانات الدخول"],
+        label: "طلب كلمة مرور أو بيانات دخول",
+        points: 3
+      },
+      {
+        words: ["بياناتك البنكية", "رقم البطاقة", "رقم الحساب البنكي"],
+        label: "طلب بيانات مالية",
+        points: 3
+      },
+      {
+        words: ["رسوم الاستلام", "رسوم التوصيل", "ادفعي الرسوم", "حوّل المبلغ"],
+        label: "طلب دفع أو تحويل مالي",
+        points: 2
+      },
+      {
+        words: ["اضغط الرابط", "الرابط المرفق", "اضغطي هنا", "انقر هنا"],
+        label: "حث على فتح رابط",
+        points: 1
+      },
+      {
+        words: ["فورًا", "عاجل", "خلال دقائق", "آخر فرصة", "سيتم إيقاف"],
+        label: "لغة استعجال أو تهديد",
+        points: 1
+      },
+      {
+        words: ["ربحت جائزة", "مبروك الفوز", "جائزة مجانية"],
+        label: "ادعاء الفوز بجائزة",
+        points: 2
+      }
+    ];
 
-$("export").addEventListener("click", () => {
-  if (!history.length) {
-    alert("حلّلي رسالة واحدة على الأقل أولًا.");
-    return;
-  }
+    let latestResult = null;
+    let history = [];
+    let totalChecks = 0;
+    let highRiskCount = 0;
 
-  const rows = [
-    ["الرسالة","التصنيف التقديري","المؤشرات","النصيحة","الوقت"],
-    ...history.map(item => [
-      item.message,item.risk,item.warnings,item.advice,item.time
-    ])
-  ];
+    function analyze(text) {
+      const normalized = text.toLowerCase();
+      const found = indicators.filter(item =>
+        item.words.some(word => normalized.includes(word.toLowerCase()))
+      );
 
-  const csv = "\uFEFF" + rows.map(row =>
-    row.map(value => '"' + String(value).replace(/"/g,'""') + '"').join(",")
-  ).join("\r\n");
+      const score = found.reduce((sum, item) => sum + item.points, 0);
+      let risk = "منخفض";
+      let color = "var(--green)";
+      let advice = "لا تتخذي القرار اعتمادًا على النتيجة وحدها، وتحققي من المصدر عند الشك.";
 
-  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "Aman_AI_Results.csv";
-  link.click();
-  URL.revokeObjectURL(url);
-});
-</script>
+      if (score >= 5) {
+        risk = "مرتفع";
+        color = "var(--red)";
+        advice = "لا تشاركي بياناتك ولا تفتحي الروابط قبل التحقق من الجهة عبر قناة رسمية.";
+      } else if (score >= 2) {
+        risk = "يحتاج إلى الحذر";
+        color = "var(--orange)";
+        advice = "راجعي المرسل والرابط واطلبي التأكد من الجهة عبر وسيلة اتصال موثوقة.";
+      }
+
+      return {
+        score,
+        risk,
+        color,
+        advice,
+        warnings: found.map(item => item.label)
+      };
+    }
+
+    function analyzeMessage() {
+      const text = $("message").value.trim();
+
+      if (!text) {
+        alert("اكتبي نص الرسالة أولًا.");
+        return;
+      }
+
+      latestResult = analyze(text);
+      totalChecks++;
+
+      if (latestResult.risk === "مرتفع") highRiskCount++;
+
+      $("analysisResult").style.display = "block";
+      $("riskLabel").textContent = "التصنيف التقديري: " + latestResult.risk;
+      $("riskLabel").style.color = latestResult.color;
+      $("riskDescription").textContent = "هذه النتيجة مبنية على مؤشرات نصية محددة.";
+      $("meterFill").style.width = Math.min(latestResult.score / 10 * 100, 100) + "%";
+      $("meterFill").style.background = latestResult.color;
+      $("scoreText").textContent = "مؤشر القواعد: " + latestResult.score + " — ليس احتمالًا علميًا لحدوث الاحتيال.";
+
+      const list = $("indicatorList");
+      list.innerHTML = "";
+
+      if (!latestResult.warnings.length) {
+        const li = document.createElement("li");
+        li.textContent = "لم تظهر مؤشرات مطابقة للقواعد الحالية.";
+        list.appendChild(li);
+      } else {
+        latestResult.warnings.forEach(warning => {
+          const li = document.createElement("li");
+          li.textContent = warning;
+          list.appendChild(li);
+        });
+      }
+
+      $("advice").textContent = latestResult.advice;
+      updateStats();
+      $("analysisResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function clearMessage() {
+      $("message").value = "";
+      $("analysisResult").style.display = "none";
+      latestResult = null;
+    }
+
+    async function copyMessage() {
+      const text = $("message").value;
+
+      if (!text.trim()) {
+        alert("لا يوجد نص لنسخه.");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("تم نسخ النص.");
+      } catch {
+        $("message").select();
+        document.execCommand("copy");
+        alert("حاولي نسخ النص من المربع إذا لم يعمل النسخ التلقائي.");
+      }
+    }
+
+    function useSample(index) {
+      $("message").value = samples[index];
+      analyzeMessage();
+    }
+
+    function saveResult() {
+      if (!latestResult) {
+        alert("افحصي رسالة أولًا.");
+        return;
+      }
+
+      history.unshift({
+        text: $("message").value,
+        risk: latestResult.risk,
+        score: latestResult.score,
+        warnings: latestResult.warnings,
+        time: new Date().toLocaleString("ar-SA")
+      });
+
+      renderHistory();
+      updateStats();
+    }
+
+    function renderHistory() {
+      const area = $("historyList");
+      area.innerHTML = "";
+
+      if (!history.length) {
+        area.textContent = "لا توجد نتائج محفوظة حتى الآن.";
+        area.className = "muted";
+        return;
+      }
+
+      area.className = "";
+
+      history.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+
+        const title = document.createElement("strong");
+        title.textContent = item.risk + " — " + item.time;
+
+        const content = document.createElement("p");
+        content.textContent = item.text;
+
+        const detail = document.createElement("p");
+        detail.className = "muted";
+        detail.textContent = "المؤشرات: " + (item.warnings.join("، ") || "لا توجد مؤشرات مطابقة");
+
+        div.append(title, content, detail);
+        area.appendChild(div);
+      });
+    }
+
+    function updateStats() {
+      $("totalCount").textContent = totalChecks;
+      $("highCount").textContent = highRiskCount;
+      $("savedCount").textContent = history.length;
+    }
+
+    function clearHistory() {
+      if (!confirm("هل تريدين مسح جميع النتائج المحفوظة في هذه الجلسة؟")) return;
+      history = [];
+      renderHistory();
+      updateStats();
+    }
+
+    function exportHistory() {
+      if (!history.length) {
+        alert("لا توجد نتائج محفوظة للتصدير.");
+        return;
+      }
+
+      const rows = [
+        ["الوقت", "التصنيف", "المؤشر", "الرسالة"],
+        ...history.map(item => [
+          item.time,
+          item.risk,
+          item.warnings.join("، "),
+          item.text
+        ])
+      ];
+
+      const csv = rows.map(row =>
+        row.map(value => '"' + String(value).replace(/"/g, '""') + '"').join(",")
+      ).join("\n");
+
+      const blob = new Blob(["\uFEFF" + csv], {
+        type: "text/csv;charset=utf-8;"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Aman_AI_Results.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    const questions = [
+      {
+        q: "وصلتك رسالة تطلب رمز التحقق وكلمة المرور. ما التصرف الأفضل؟",
+        options: [
+          "أرسل البيانات لأنها تبدو رسمية",
+          "أتحقق من المصدر الرسمي ولا أشارك الرمز",
+          "أعيد إرسال الرسالة لأشخاص آخرين"
+        ],
+        correct: 1,
+        explanation: "لا تشاركي رموز التحقق أو كلمات المرور مع أي شخص."
+      },
+      {
+        q: "رسالة تخبرك أنك ربحت جائزة وتطلب رسومًا مقدمًا. ماذا تفعلين؟",
+        options: [
+          "أدفع بسرعة",
+          "أتحقق من العرض من مصدر رسمي",
+          "أضغط الرابط دون فحص"
+        ],
+        correct: 1,
+        explanation: "تحققي من الجوائز والرسوم عبر مصدر موثوق قبل أي دفع."
+      },
+      {
+        q: "هل عدم ظهور مؤشرات في الرسالة يعني أنها آمنة بالتأكيد؟",
+        options: [
+          "نعم، بالتأكيد",
+          "لا، يجب التحقق من المصدر والسياق عند الشك",
+          "نعم إذا كانت قصيرة"
+        ],
+        correct: 1,
+        explanation: "الأداة لا تستطيع اكتشاف جميع أساليب الاحتيال."
+      }
+    ];
+
+    let questionIndex = 0;
+    let quizPoints = 0;
+    let answered = false;
+
+    function answerQuiz(isCorrect) {
+      if (answered) return;
+      answered = true;
+
+      const correct = isCorrect === true;
+      if (correct) quizPoints++;
+
+      $("quizFeedback").textContent = correct
+        ? "إجابة صحيحة! " + questions[questionIndex].explanation
+        : "حاولي تذكّر قاعدة التحقق وعدم مشاركة البيانات. " + questions[questionIndex].explanation;
+
+      $("quizScore").textContent = "النقاط: " + quizPoints;
+    }
+
+    function renderQuestion() {
+      const question = questions[questionIndex];
+      $("quizQuestion").textContent = question.q;
+      $("quizOptions").innerHTML = "";
+
+      question.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "secondary";
+        button.style.margin = "5px";
+        button.textContent = option;
+        button.onclick = () => answerQuiz(index === question.correct);
+        $("quizOptions").appendChild(button);
+      });
+
+      $("quizFeedback").textContent = "اختاري إجابة لمعرفة التفسير.";
+      answered = false;
+    }
+
+    function nextQuestion() {
+      questionIndex = (questionIndex + 1) % questions.length;
+
+      if (questionIndex === 0) {
+        quizPoints = 0;
+        $("quizScore").textContent = "النقاط: 0";
+      }
+
+      renderQuestion();
+    }
+
+    function resetQuiz() {
+      questionIndex = 0;
+      quizPoints = 0;
+      $("quizScore").textContent = "النقاط: 0";
+      renderQuestion();
+    }
+
+    function compareMessages() {
+      const a = $("messageA").value.trim();
+      const b = $("messageB").value.trim();
+
+      if (!a || !b) {
+        alert("أدخلي نص الرسالتين للمقارنة.");
+        return;
+      }
+
+      const resultA = analyze(a);
+      const resultB = analyze(b);
+      const area = $("comparisonResult");
+
+      area.classList.remove("hidden");
+      area.innerHTML = "";
+
+      const heading = document.createElement("h3");
+      heading.textContent = "نتيجة المقارنة";
+      area.appendChild(heading);
+
+      [
+        ["الرسالة الأولى", resultA],
+        ["الرسالة الثانية", resultB]
+      ].forEach(([label, result]) => {
+        const p = document.createElement("p");
+        p.textContent = label + ": " + result.risk +
+          " — المؤشرات: " + (result.warnings.join("، ") || "لا توجد مؤشرات مطابقة");
+        area.appendChild(p);
+      });
+
+      const note = document.createElement("p");
+      note.className = "muted";
+      note.textContent = "النتيجة مبنية على قواعد نصية ولا تثبت أن أي رسالة آمنة أو احتيالية.";
+      area.appendChild(note);
+    }
+
+    function scrollToSection(id) {
+      $(id).scrollIntoView({ behavior: "smooth" });
+    }
+
+    function togglePresentation() {
+      document.body.classList.toggle("presentation-mode");
+      const active = document.body.classList.contains("presentation-mode");
+
+      document.querySelectorAll(".samples, #comparison").forEach(element => {
+        element.classList.toggle("hidden", active);
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
