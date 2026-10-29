@@ -7,416 +7,499 @@
 <title>أمان AI | الحماية الرقمية</title>
 <style>
 :root {
-  --navy:#103B55;
-  --teal:#238C92;
-  --mint:#D9F2EE;
-  --bg:#F1F6F9;
-  --text:#142D3A;
-  --muted:#607783;
-  --border:#DFE8ED;
+  --navy:#103B55; --teal:#167783; --bg:#F1F6F9;
+  --text:#142D3A; --white:#fff; --line:#D7E5EA;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 8% 20%,#238c9214,transparent 28%),
-    radial-gradient(circle at 92% 55%,#103b550d,transparent 30%),
-    var(--bg);
-  line-height:1.8;
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:Tahoma,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.8;
 }
-button,textarea{font-family:inherit}
-.hero{
-  background:linear-gradient(125deg,#09283C,#103B55 48%,#167783);
-  color:white;
-  padding:45px 20px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 12px 35px #0a2f4229;
+header {
+  padding:35px 20px; color:white;
+  background:linear-gradient(125deg,#09283C,var(--navy),var(--teal));
 }
-.hero:after{
-  content:"";
-  position:absolute;
-  width:320px;height:320px;
-  border:1px solid #ffffff30;
-  border-radius:50%;
-  left:-90px;top:-130px;
-  box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06;
-  pointer-events:none;
+.container { max-width:1050px; margin:auto; }
+.brand { font-size:23px; font-weight:bold; }
+header h1 { font-size:clamp(27px,5vw,40px); margin:25px 0 8px; }
+header p { color:#E1EDF2; max-width:650px; }
+.badge {
+  display:inline-block; border:1px solid #ffffff66;
+  border-radius:30px; padding:5px 12px; font-size:13px;
 }
-.hero-inner,main{max-width:1080px;margin:auto}
-.hero-inner{position:relative;z-index:1}
-.brand{display:flex;align-items:center;gap:13px;font-weight:bold}
-.shield{
-  display:grid;place-items:center;width:56px;height:56px;
-  border-radius:18px;background:linear-gradient(145deg,#e6fbf7,#bde9e3);
-  color:#123e5a;font-size:28px;box-shadow:0 8px 22px #0003;
+main { max-width:1050px; margin:25px auto; padding:0 16px; }
+.notice {
+  background:#E8F4F6; border-right:4px solid var(--teal);
+  padding:15px; border-radius:12px; margin-bottom:20px;
 }
-h1{font-size:clamp(29px,5vw,40px);line-height:1.4;margin:25px 0 10px}
-.hero p{max-width:690px;color:#e1edf2;line-height:2;margin:0}
-.pill{
-  display:inline-block;margin-top:19px;padding:7px 14px;
-  border:1px solid #ffffff45;background:#ffffff15;
-  border-radius:999px;font-size:13px
+.layout { display:grid; grid-template-columns:1.4fr .8fr; gap:18px; }
+.card {
+  background:white; border:1px solid var(--line);
+  border-radius:18px; padding:22px; margin-bottom:18px;
+  box-shadow:0 6px 22px #103B5510;
 }
-main{padding:28px 20px 50px}
-.notice{
-  border:1px solid #c8dfe8;background:#f0f8fa;color:#214a5b;
-  padding:16px 18px;border-radius:16px;margin-bottom:24px;
-  font-size:14px;border-right:4px solid var(--teal)
+h2 { margin-top:0; font-size:21px; }
+.muted { color:#607783; font-size:14px; }
+textarea,select,input {
+  width:100%; padding:12px; border:1px solid #C8D8E0;
+  border-radius:10px; font:15px Tahoma,Arial,sans-serif;
+  background:#FCFEFF; color:var(--text);
 }
-.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:20px;align-items:start}
-.card,.info-card{
-  background:#fff;border:1px solid var(--border);border-radius:22px;
-  padding:24px;box-shadow:0 10px 30px #142d3a0d;
-  transition:box-shadow .2s,border-color .2s,transform .2s
+textarea { min-height:150px; resize:vertical; }
+label { display:block; font-size:13px; font-weight:bold; margin-bottom:6px; }
+.options { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+button {
+  border:0; border-radius:10px; padding:12px 15px;
+  cursor:pointer; font:bold 14px Tahoma,Arial,sans-serif;
 }
-.card:hover,.info-card:hover{box-shadow:0 15px 34px #142d3a15;border-color:#c5dde4}
-.card h2{font-size:22px;margin:0 0 8px}
-.muted{color:var(--muted);font-size:14px;line-height:1.8;margin:0 0 16px}
-textarea{
-  width:100%;min-height:180px;resize:vertical;padding:15px;
-  font-size:15px;line-height:1.9;border:1px solid #c8d8e0;
-  border-radius:15px;background:#fcfeff;color:var(--text);outline:none;
-  transition:border-color .2s,box-shadow .2s
+button:hover { opacity:.88; }
+.primary { background:var(--navy); color:white; }
+.secondary { background:#D9F2EE; color:#123E5A; }
+.ghost { background:white; border:1px solid #C8D8E0; color:var(--text); }
+.actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.actions button { flex:1; }
+.samples { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.sample { text-align:right; background:#F1F7F9; color:var(--text); border:1px solid var(--line); }
+.sample small { display:block; font-weight:normal; color:#607783; }
+.result {
+  display:none; margin-top:18px; border:1px solid var(--line);
+  border-radius:14px; padding:17px; overflow-wrap:anywhere;
 }
-textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #238c9226}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-button{
-  border:0;border-radius:12px;padding:12px 17px;cursor:pointer;
-  font-size:14px;font-weight:bold;
-  transition:transform .15s,box-shadow .15s,background .15s
-}
-button:hover{transform:translateY(-2px)}
-button:focus-visible{outline:3px solid #238c9270;outline-offset:3px}
-.primary{background:linear-gradient(110deg,var(--navy),#176477);color:white;box-shadow:0 5px 14px #123e5a2e}
-.secondary{background:var(--mint);color:#123e5a}
-.ghost{background:white;color:var(--text);border:1px solid #cfdee4}
-.sample-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
-.sample-choice{
-  min-height:72px;text-align:right;line-height:1.6;
-  background:linear-gradient(135deg,#f7fbfc,#eaf4f7);
-  color:#173e50;border:1px solid #d6e5ea;
-  box-shadow:0 3px 10px #142d3a06
-}
-.sample-choice:hover{border-color:var(--teal);box-shadow:0 7px 16px #278a8c20}
-.sample-choice small{display:block;font-weight:normal;opacity:.8;margin-top:4px}
-.result{
-  display:none;margin-top:20px;border:1px solid #dce7eb;
-  border-radius:18px;padding:20px;
-  background:linear-gradient(145deg,#fff,#f7fbfc);
-  box-shadow:0 8px 22px #142d3a0b;
-  animation:appear .25s ease-out
-}
-@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-.result-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.status{display:inline-block;padding:7px 13px;border-radius:999px;font-weight:bold;font-size:13px}
-.low{background:#dff4e7;color:#17643a}
-.medium{background:#fff0cb;color:#795000}
-.high{background:#ffe0df;color:#942d2b}
-.result h3{margin:18px 0 8px;font-size:15px}
-ul{padding-right:22px;line-height:1.9;margin:5px 0}
-.advice{padding:14px;border-radius:12px;background:#eff7f8;border-right:3px solid var(--teal);line-height:1.9;margin-top:12px;font-size:14px}
-.side-card{margin-bottom:18px}
-.stat{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #e4ecef;font-size:14px}
-.stat:last-child{border-bottom:0}
-.stat strong{font-size:16px}
-.project-section{margin-top:25px}
-.section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.section-icon{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:14px;background:var(--mint);color:#123e5a;font-size:21px}
-.eyebrow{color:#176477;font-size:12px;font-weight:bold;letter-spacing:.4px}
-.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
-.info-card{border-radius:18px;padding:20px}
-.info-card h3{margin:0 0 7px;font-size:17px}
-.info-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.9}
-.project-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
-.steps{display:grid;gap:12px;margin-top:14px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-number{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:10px;background:var(--mint);color:#123e5a;font-weight:bold}
-.step p{margin:0;font-size:14px;line-height:1.9}
-.privacy-note{padding:14px;margin-top:14px;background:#f0f8f3;border:1px solid #d5ebdd;border-radius:13px;color:#24543a;font-size:13px;line-height:1.9}
-.history{margin-top:22px}
-.history-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.history-list{margin-top:12px;display:grid;gap:10px}
-.history-item{border:1px solid #e0e9ed;border-radius:12px;padding:12px}
-.history-item p{margin:0 0 8px;line-height:1.8;overflow-wrap:anywhere}
-.history-item small{color:#647c88}
-footer{text-align:center;padding:24px 20px;color:#657d89;font-size:12px;line-height:1.9;border-top:1px solid #e1eaf0}
-@media(max-width:760px){
-  .layout,.project-layout{grid-template-columns:1fr}
-  .info-grid{grid-template-columns:1fr}
-  .sample-grid{grid-template-columns:1fr}
-  .hero{padding-top:30px;padding-bottom:34px}
-  main{padding:20px 14px 40px}
-  .card{padding:19px}
-  .actions button{flex:1 1 auto}
+.result-head { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+.status { border-radius:20px; padding:4px 12px; font-size:13px; font-weight:bold; }
+.low { background:#DFF4E7; color:#17643A; }
+.medium { background:#FFF0CB; color:#795000; }
+.high { background:#FFE0DF; color:#942D2B; }
+.meter { height:8px; background:#E5EDF0; border-radius:20px; margin-top:14px; overflow:hidden; }
+.meter span { display:block; height:100%; }
+.advice { background:#EFF7F8; padding:12px; border-radius:10px; margin-top:12px; }
+.stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); }
+.stat:last-child { border:0; }
+.tips li { margin-bottom:8px; }
+.history-item { border-top:1px solid var(--line); padding:12px 0; overflow-wrap:anywhere; }
+footer { text-align:center; color:#607783; padding:22px; font-size:12px; }
+@media(max-width:760px) {
+  .layout { grid-template-columns:1fr; }
+  .options,.samples { grid-template-columns:1fr; }
+  .card { padding:17px; }
 }
 </style>
 </head>
 <body>
-<div id="app">
-<header class="hero">
-  <div class="hero-inner">
-    <div class="brand">
-      <div class="shield">🛡️</div>
-      <div><div style="font-size:20px">أمان AI</div><div style="font-size:12px;opacity:.78;margin-top:3px">مساعد توعوي للأمن الرقمي</div></div>
-    </div>
-    <h1>خذي لحظة قبل ما تضغطين.</h1>
-    <p>حلّلي نص الرسالة بحثًا عن مؤشرات شائعة للاحتيال الإلكتروني، وافهمي لماذا قد تحتاج الرسالة إلى تحقق إضافي.</p>
-    <span class="pill">✦ نموذج أولي تعليمي · Prototype</span>
+<header>
+  <div class="container">
+    <div class="brand">🛡️ أمان AI</div>
+    <h1>خذي لحظة قبل ما تضغطين</h1>
+    <p>مساعد توعوي يساعدك على ملاحظة مؤشرات الاحتيال الإلكتروني في الرسائل العربية.</p>
+    <span class="badge">نموذج أولي تعليمي</span>
   </div>
 </header>
 
 <main>
-  <div class="notice"><strong>مهم:</strong> هذه نسخة تجريبية تستخدم قواعد ومؤشرات نصية داخل المتصفح، وليست متصلة بنموذج التعلم الآلي المدرّب. النتائج تقديرية، ولا تثبت وحدها أن الرسالة احتيالية أو آمنة.</div>
+  <div class="notice">
+    <strong>تنبيه:</strong>
+    يعتمد هذا النموذج على قواعد وكلمات مفتاحية محددة مسبقًا.
+    نتائجه تقديرية ولا تثبت أن الرسالة احتيالية أو آمنة.
+    لا تدخلي أي معلومات شخصية أو سرية.
+  </div>
 
   <div class="layout">
     <section class="card">
-      <h2>حلّلي رسالة</h2>
-      <p class="muted">الصقي نص الرسالة فقط. لا تضيفي كلمات مرور أو رموز تحقق أو بيانات شخصية.</p>
-      <textarea id="message" placeholder="مثال: عاجل، أرسل رمز التحقق الآن لاستلام جائزتك..." aria-label="نص الرسالة"></textarea>
+      <h2>🔎 تحليل الرسائل</h2>
+      <p class="muted">الصقي نص الرسالة التي تريدين فحصها.</p>
+      <textarea id="message" placeholder="اكتبي الرسالة هنا..."></textarea>
+
+      <div class="options">
+        <div>
+          <label for="sensitivity">حساسية التنبيه</label>
+          <select id="sensitivity">
+            <option value="standard">متوازنة</option>
+            <option value="high">مرتفعة</option>
+            <option value="low">منخفضة</option>
+          </select>
+        </div>
+        <div>
+          <label for="type">نوع الرسالة</label>
+          <select id="type">
+            <option value="all">جميع الأنواع</option>
+            <option value="bank">بنكية ومالية</option>
+            <option value="delivery">شحن وتوصيل</option>
+            <option value="prize">جوائز وعروض</option>
+            <option value="account">حسابات ورموز تحقق</option>
+          </select>
+        </div>
+      </div>
+
       <div class="actions">
         <button class="primary" id="analyze">تحليل الرسالة</button>
         <button class="ghost" id="clear">مسح</button>
+        <button class="secondary" id="copy">نسخ التقرير</button>
       </div>
 
-      <h3 style="margin:18px 0 0;font-size:15px">جرّبي مثالًا جاهزًا</h3>
-      <p class="muted" style="margin:3px 0 0">اختاري أي مثال لملء الرسالة وتحليلها مباشرة.</p>
-      <div class="sample-grid" id="sampleGrid">
-        <button class="sample-choice" data-sample="0">🚨 إيقاف الحساب<small>استعجال وطلب تحديث بيانات</small></button>
-        <button class="sample-choice" data-sample="1">🎁 جائزة وهمية<small>جائزة ورسوم استلام</small></button>
-        <button class="sample-choice" data-sample="2">🔐 طلب رمز تحقق<small>طلب رمز سري أو كلمة مرور</small></button>
-        <button class="sample-choice" data-sample="3">📦 رسالة شحنة<small>رابط يحتاج إلى تحقق</small></button>
-        <button class="sample-choice" data-sample="4">💳 بيانات بنكية<small>طلب معلومات مالية</small></button>
-        <button class="sample-choice" data-sample="5">💬 رسالة عادية<small>مثال غير مريب للمقارنة</small></button>
-      </div>
-      <div id="result" class="result" aria-live="polite"></div>
+      <h3>🧪 أمثلة للتجربة</h3>
+      <div class="samples" id="samples"></div>
+      <div class="result" id="result" aria-live="polite"></div>
     </section>
 
     <aside>
-      <section class="card side-card">
-        <h2>كيف يعمل؟</h2>
-        <p class="muted">يفحص النص بحثًا عن إشارات قد تستدعي الحذر، ثم يشرح ما وجده ويقترح خطوات آمنة.</p>
-        <div class="stat"><span>لغة الواجهة</span><strong>العربية</strong></div>
-        <div class="stat"><span>نوع التحليل</span><strong>مؤشرات نصية</strong></div>
-        <div class="stat"><span>حفظ البيانات</span><strong>داخل الجلسة</strong></div>
-      </section>
       <section class="card">
-        <h2>نصائح سريعة</h2>
-        <ul>
+        <h2>📊 إحصاءات الجلسة</h2>
+        <div class="stat"><span>عدد التحليلات</span><strong id="total">0</strong></div>
+        <div class="stat"><span>تنبيهات مرتفعة</span><strong id="highCount">0</strong></div>
+        <div class="stat"><span>تنبيهات متوسطة</span><strong id="mediumCount">0</strong></div>
+        <div class="stat"><span>تنبيهات منخفضة</span><strong id="lowCount">0</strong></div>
+        <p class="muted">الإحصاءات لهذه الجلسة فقط.</p>
+      </section>
+
+      <section class="card">
+        <h2>🛡️ نصائح للحماية</h2>
+        <ul class="tips">
           <li>لا تشاركي رمز التحقق أو كلمة المرور.</li>
-          <li>تحققي من المرسل عبر التطبيق أو الموقع الرسمي.</li>
-          <li>لا تعتمدي على نتيجة آلية وحدها.</li>
+          <li>لا تفتحي الروابط غير الموثوقة.</li>
+          <li>تحققي من المرسل من خلال قناة رسمية.</li>
+          <li>لا تدفعي رسومًا بسبب رسالة مشبوهة دون تحقق.</li>
         </ul>
       </section>
     </aside>
   </div>
 
-  <section class="project-section">
-    <div class="section-title">
-      <div class="section-icon">✦</div>
-      <div><div class="eyebrow">عن المشروع</div><h2 style="margin:2px 0 0;font-size:25px">تقنية تساعدك تتوقفين وتتحققين</h2></div>
+  <section class="card">
+    <h2>📁 سجل التحليلات</h2>
+    <p class="muted">السجل مؤقت ولا يُحفظ بعد إعادة تحميل الصفحة.</p>
+    <div class="actions">
+      <button class="secondary" id="export">تصدير CSV</button>
+      <button class="ghost" id="clearHistory">مسح السجل</button>
     </div>
-    <div class="info-grid">
-      <article class="info-card"><div class="section-icon" style="margin-bottom:13px">🎯</div><h3>هدف أمان AI</h3><p>رفع الوعي بالاحتيال الإلكتروني ومساعدة المستخدم على ملاحظة إشارات تستحق التحقق قبل مشاركة المعلومات.</p></article>
-      <article class="info-card"><div class="section-icon" style="margin-bottom:13px">🔎</div><h3>طريقة العمل الحالية</h3><p>يبحث النموذج التجريبي عن عبارات مثل طلب رمز التحقق والاستعجال والروابط، ثم يعرض مؤشرات ونصيحة وقائية.</p></article>
-      <article class="info-card"><div class="section-icon" style="margin-bottom:13px">🧪</div><h3>النتيجة الأولية</h3><p>يوضح النموذج كيف يمكن تقديم تنبيه توعوي تفاعلي. يلزم اختباره على رسائل متنوعة قبل تقييم دقته.</p></article>
-    </div>
+    <div id="history"><p class="muted">لم تُحلّل أي رسالة بعد.</p></div>
   </section>
 
-  <section class="project-layout">
-    <article class="card">
-      <div class="section-title"><div class="section-icon">🛠️</div><div><div class="eyebrow">خطة التطوير</div><h2 style="margin:2px 0 0">من النموذج الأولي إلى نموذج أذكى</h2></div></div>
-      <div class="steps">
-        <div class="step"><span class="step-number">1</span><p><strong>الواجهة:</strong> تجربة عربية واضحة ومتجاوبة مع الجوال والكمبيوتر.</p></div>
-        <div class="step"><span class="step-number">2</span><p><strong>الذكاء الاصطناعي:</strong> ربط النموذج المدرّب لاحقًا بخدمة مناسبة؛ GitHub Pages وحده لا يشغّل Python أو ملف joblib.</p></div>
-        <div class="step"><span class="step-number">3</span><p><strong>الاختبار:</strong> تجربة رسائل سليمة ومشبوهة وتسجيل النتائج والأخطاء قبل ادعاء الدقة.</p></div>
-      </div>
-    </article>
-    <article class="card">
-      <div class="section-title"><div class="section-icon">🏆</div><div><div class="eyebrow">عرض المشروع</div><h2 style="margin:2px 0 0">لمعرض الأمن والتقنية</h2></div></div>
-      <p class="muted">نقطة القوة في العرض هي شرح المشكلة وكيف تساعد الواجهة المستخدم وما الذي يحتاج المشروع إلى تطويره لاحقًا.</p>
-      <ul>
-        <li><strong>المشكلة:</strong> قد تخدع الرسائل المستخدم بالاستعجال أو بطلب معلومات حساسة.</li>
-        <li><strong>الحل:</strong> تحليل أولي يلفت الانتباه إلى مؤشرات تستحق التحقق.</li>
-        <li><strong>التطوير القادم:</strong> دمج النموذج المدرّب وتقييمه على مجموعة اختبار.</li>
-      </ul>
-      <div class="privacy-note">🔒 <strong>الخصوصية:</strong> التحليل الحالي يجري داخل المتصفح ولا يرسل الرسالة إلى خادم. تجنبي إدخال معلومات شخصية أو سرية.</div>
-    </article>
-  </section>
-
-  <section class="card history">
-    <div class="history-head">
-      <div><h2 style="margin-bottom:5px">سجل التحليلات</h2><p class="muted" style="margin:0">يُحفظ مؤقتًا في هذه الصفحة فقط.</p></div>
-      <div class="actions" style="margin:0"><button class="secondary" id="export">تصدير CSV</button><button class="ghost" id="clearHistory">مسح السجل</button></div>
-    </div>
-    <div id="historyList" class="history-list"><p class="muted">ما فيه تحليلات حتى الآن.</p></div>
+  <section class="card">
+    <h2>ℹ️ عن المشروع</h2>
+    <p>يهدف أمان AI إلى رفع الوعي بمؤشرات الاحتيال الإلكتروني عبر واجهة عربية سهلة الاستخدام.</p>
+    <p><strong>المنهج الحالي:</strong> مطابقة كلمات وعبارات محددة مسبقًا.</p>
+    <p><strong>التطوير القادم:</strong> اختبار النموذج على رسائل متنوعة، وتوثيق الأخطاء، ثم تقييم إمكانية ربط نموذج تعلم آلي مدرّب.</p>
   </section>
 </main>
 
-<footer>أمان AI — نموذج توعوي أولي لمشروع علمي. لا يضمن اكتشاف كل محاولات الاحتيال ولا يحل محل التحقق من المصادر الرسمية.</footer>
-</div>
+<footer>
+  أمان AI — مشروع توعوي أولي. لا يعتمد عليه وحده لاتخاذ قرارات أمنية.
+</footer>
 
 <script>
 const $ = id => document.getElementById(id);
-const historyItems = [];
 
-const sampleMessages = [
-  'عاجل! سيتم إيقاف حسابك خلال دقائق، اضغط الرابط لتحديث بياناتك.',
-  'مبروك ربحت جائزة كبيرة! ادفع رسوم الاستلام الآن لتحصل عليها.',
-  'أرسل رمز التحقق وكلمة المرور لتأكيد هويتك فورًا.',
-  'لديك شحنة متوقفة، اضغط الرابط للتحقق من بيانات التوصيل.',
-  'يرجى إدخال رقم البطاقة وبياناتك البنكية لاستكمال الطلب.',
-  'السلام عليكم، تذكير بموعد اجتماع الفريق غدًا الساعة العاشرة صباحًا.'
+const examples = [
+  {
+    name:"🚨 إيقاف الحساب",
+    hint:"رسالة مستعجلة",
+    text:"عاجل! سيتم إيقاف حسابك خلال دقائق، اضغط الرابط لتحديث بياناتك."
+  },
+  {
+    name:"🎁 جائزة وهمية",
+    hint:"طلب رسوم",
+    text:"مبروك ربحت جائزة كبيرة! ادفع رسوم الاستلام الآن لتحصل عليها."
+  },
+  {
+    name:"🔐 رمز تحقق",
+    hint:"طلب بيانات سرية",
+    text:"أرسل رمز التحقق وكلمة المرور لتأكيد هويتك فورًا."
+  },
+  {
+    name:"📦 شحنة",
+    hint:"طلب بيانات توصيل",
+    text:"لديك شحنة متوقفة، اضغط الرابط للتحقق من بيانات التوصيل."
+  },
+  {
+    name:"💳 بيانات بنكية",
+    hint:"طلب معلومات مالية",
+    text:"يرجى إدخال رقم البطاقة وبياناتك البنكية لاستكمال الطلب."
+  },
+  {
+    name:"💬 رسالة عادية",
+    hint:"رسالة اجتماع",
+    text:"السلام عليكم، تذكير بموعد اجتماع الفريق غدًا الساعة العاشرة صباحًا."
+  },
+  {
+    name:"📱 تحديث تطبيق",
+    hint:"رابط غير موضح المصدر",
+    text:"حدّث التطبيق عبر هذا الرابط وأدخل بيانات حسابك لمواصلة الاستخدام."
+  },
+  {
+    name:"🏦 تنبيه بنكي",
+    hint:"طلب بيانات الدخول",
+    text:"تم تعليق حسابك البنكي، أرسل كلمة المرور ورمز التحقق لاستعادته."
+  },
+  {
+    name:"🧾 فاتورة مستحقة",
+    hint:"مطالبة بالدفع",
+    text:"فاتورتك مستحقة الآن، ادفع فورًا لتجنب إيقاف الخدمة."
+  }
 ];
-
-function normalizeText(text) {
-  return text.toLowerCase().normalize('NFKC')
-    .replace(/[\u064B-\u065F\u0670]/g, '')
-    .replace(/\u0640/g, '')
-    .replace(/[أإآٱ]/g, 'ا')
-    .replace(/ى/g, 'ي')
-    .replace(/\s+/g, ' ').trim();
-}
 
 const rules = [
-  {name:'طلب رمز تحقق أو كلمة مرور', words:['رمز التحقق','رمز التأكيد','رمز الدخول','كلمة المرور','الرقم السري','otp','password','رمز التفعيل']},
-  {name:'استعجال أو تهديد بإيقاف الحساب', words:['عاجل','فورا','خلال دقائق','ايقاف حسابك','اغلاق حسابك','سيتم اغلاق','اخر فرصة','حسابك معلق','تحرك الان','بسرعة']},
-  {name:'جائزة أو مكافأة غير متوقعة', words:['ربحت جائزة','مبروك ربحت','استلام جائزتك','فزت بجائزة','جائزة كبيرة','مكافأة مجانية','فزت بسحب','جائزتك']},
-  {name:'طلب تحويل أموال أو رسوم', words:['حول المال','حول المبلغ','رسوم الاستلام','ادفع رسوم','ارسل المال','حول الان','بطاقة هدايا','رسوم التوصيل']},
-  {name:'طلب بيانات شخصية أو مالية', words:['بيانات بطاقتك','رقم البطاقة','بياناتك البنكية','رقم هويتك','ادخل بياناتك','رقم الحساب البنكي','بيانات الحساب']},
-  {name:'رابط يحتاج إلى تحقق', words:['http://','https://','www.','اضغط الرابط','اضغط هنا','افتح الرابط','رابط التحقق']},
-  {name:'انتحال جهة أو شركة', words:['تحديث بيانات البنك','حسابك البنكي','خدمة العملاء','الدعم الفني','تأكيد هويتك','شحنة متوقفة','البنك المركزي']},
-  {name:'عرض غير واقعي أو طلب السرية', words:['ربح مضمون','مبلغ مضمون','لا تخبر احدا','سرية تامة','فرصة لا تعوض','استثمار مضمون']}
+  {
+    name:"طلب رمز تحقق أو كلمة مرور",
+    words:["رمز التحقق","رمز التأكيد","رمز الدخول","كلمة المرور","الرقم السري","otp","password","رمز التفعيل"]
+  },
+  {
+    name:"استعجال أو تهديد",
+    words:["عاجل","فورا","خلال دقائق","إيقاف حسابك","اغلاق حسابك","آخر فرصة","حسابك معلق","بسرعة"]
+  },
+  {
+    name:"جائزة أو مكافأة غير متوقعة",
+    words:["ربحت جائزة","مبروك ربحت","استلام جائزتك","فزت بجائزة","جائزة كبيرة","مكافأة مجانية"]
+  },
+  {
+    name:"طلب أموال أو رسوم",
+    words:["حول المال","حول المبلغ","رسوم الاستلام","ادفع رسوم","أرسل المال","رسوم التوصيل","ادفع فورًا"]
+  },
+  {
+    name:"طلب بيانات شخصية أو مالية",
+    words:["رقم البطاقة","بياناتك البنكية","رقم هويتك","أدخل بياناتك","رقم الحساب البنكي","بيانات الحساب"]
+  },
+  {
+    name:"رابط يحتاج إلى تحقق",
+    words:["http://","https://","www.","اضغط الرابط","اضغط هنا","افتح الرابط","رابط التحقق"]
+  },
+  {
+    name:"انتحال جهة أو شركة",
+    words:["تحديث بيانات البنك","حسابك البنكي","خدمة العملاء","الدعم الفني","تأكيد هويتك","شحنة متوقفة"]
+  },
+  {
+    name:"عرض غير واقعي أو طلب السرية",
+    words:["ربح مضمون","مبلغ مضمون","لا تخبر أحدا","سرية تامة","فرصة لا تعوض","استثمار مضمون"]
+  }
 ];
 
+const history = [];
+let counts = {total:0, high:0, medium:0, low:0};
+
+function normalize(text) {
+  return text.toLowerCase().normalize("NFKC")
+    .replace(/[\u064B-\u065F\u0670]/g,"")
+    .replace(/\u0640/g,"")
+    .replace(/[أإآٱ]/g,"ا")
+    .replace(/ى/g,"ي")
+    .replace(/\s+/g," ").trim();
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
+
 function analyze(text) {
-  const normalized = normalizeText(text);
+  const clean = normalize(text);
   const warnings = [];
+
   rules.forEach(rule => {
-    if (rule.words.some(word => normalized.includes(normalizeText(word)))) {
+    if (rule.words.some(word => clean.includes(normalize(word)))) {
       warnings.push(rule.name);
     }
   });
 
-  let risk = 'منخفض', className = 'low';
-  if (warnings.length >= 3) {
-    risk = 'مرتفع'; className = 'high';
-  } else if (warnings.length >= 1) {
-    risk = 'متوسط'; className = 'medium';
+  const selectedType = $("type").value;
+  const typeWords = {
+    bank:["بنك","بنكي","بطاقة","بيانات مالية","فاتورة","ادفع"],
+    delivery:["شحنة","توصيل","طرد","مندوب","شحن"],
+    prize:["جائزة","ربحت","مبروك","مكافأة","سحب"],
+    account:["حسابك","رمز التحقق","كلمة المرور","كلمة السر","رمز الدخول"]
+  };
+
+  const matchesType = selectedType === "all" ||
+    typeWords[selectedType].some(word => clean.includes(normalize(word)));
+
+  const sensitivity = $("sensitivity").value;
+  const threshold = sensitivity === "high" ? 2 :
+                    sensitivity === "low" ? 4 : 3;
+
+  let risk = "منخفض";
+  let level = "low";
+
+  if (warnings.length >= threshold) {
+    risk = "مرتفع";
+    level = "high";
+  } else if (warnings.length > 0) {
+    risk = "متوسط";
+    level = "medium";
   }
 
-  let advice = 'لم تظهر مؤشرات ضمن القواعد الحالية، لكن هذا لا يثبت أن الرسالة آمنة. تحققي من الجهة عبر قناة رسمية إذا ساورك الشك.';
-  if (warnings.length) {
-    advice = 'لا تضغطي على الروابط ولا تشاركي رموز التحقق أو البيانات المالية. تحققي من الجهة عبر تطبيقها أو موقعها الرسمي.';
+  let advice = warnings.length
+    ? "لا تضغطي على الروابط ولا تشاركي رموز التحقق أو البيانات المالية. تحققي من الجهة عبر قناة رسمية."
+    : "لم تظهر مؤشرات ضمن القواعد الحالية، لكن هذا لا يثبت أن الرسالة آمنة. تحققي من المرسل إذا ساورك الشك.";
+
+  if (!matchesType && selectedType !== "all") {
+    advice = "الرسالة لا تطابق بوضوح النوع المختار. اختاري «جميع الأنواع» لفحص أوسع.";
   }
-  if (!text.trim()) {
-    risk = 'غير محدد'; className = 'medium';
-    advice = 'أدخلي نص رسالة أولًا حتى نتمكن من فحص المؤشرات.';
-  }
-  return {risk, className, warnings, advice};
+
+  return {
+    risk, level, warnings, advice,
+    matchesType,
+    selectedType
+  };
 }
 
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-  }[char]));
-}
+function renderResult(text, result, save = true) {
+  const score = result.level === "high" ? 85 :
+                result.level === "medium" ? 52 : 18;
 
-function renderResult(text, result) {
-  const resultEl = $('result');
-  resultEl.style.display = 'block';
+  const resultBox = $("result");
+  resultBox.style.display = "block";
 
-  const warningHtml = result.warnings.length
-    ? `<ul>${result.warnings.map(w => `<li>${escapeHtml(w)}</li>`).join('')}</ul>`
-    : '<p class="muted" style="margin:0">لم تُكتشف مؤشرات ضمن القواعد الحالية.</p>';
+  const warningsHTML = result.warnings.length
+    ? "<ul>" + result.warnings.map(w => `<li>${escapeHTML(w)}</li>`).join("") + "</ul>"
+    : '<p class="muted">لم تُكتشف مؤشرات ضمن القواعد الحالية.</p>';
 
-  resultEl.innerHTML = `
-    <div class="result-top">
+  resultBox.innerHTML = `
+    <div class="result-head">
       <strong>نتيجة الفحص التقديري</strong>
-      <span class="status ${result.className}">${result.risk}</span>
+      <span class="status ${result.level}">${escapeHTML(result.risk)}</span>
     </div>
-    <h3>مؤشرات تم العثور عليها</h3>
-    ${warningHtml}
-    <div class="advice"><strong>الخطوة المقترحة:</strong> ${escapeHtml(result.advice)}</div>
-    <p class="muted" style="margin:12px 0 0">هذا تقييم أولي قائم على كلمات مفتاحية، وليس حكمًا مؤكدًا على الرسالة.</p>`;
+    <div class="meter"><span style="width:${score}%;background:${
+      result.level === "high" ? "#C84A47" :
+      result.level === "medium" ? "#D29A24" : "#2C9A62"
+    }"></span></div>
+    <p class="muted">المؤشر بصري توضيحي وليس نسبة احتمال أو دقة.</p>
+    <h3>المؤشرات المكتشفة (${result.warnings.length})</h3>
+    ${warningsHTML}
+    <div class="advice"><strong>النصيحة:</strong> ${escapeHTML(result.advice)}</div>
+    <p class="muted">هذا تقييم أولي قائم على كلمات مفتاحية، وليس حكمًا مؤكدًا على الرسالة.</p>
+  `;
 
-  if (text.trim()) {
-    historyItems.unshift({
-      message:text, risk:result.risk,
-      warnings:result.warnings.join('؛ '),
+  if (save && text.trim()) {
+    history.unshift({
+      message:text,
+      risk:result.risk,
+      warnings:result.warnings.join("؛ "),
       advice:result.advice,
-      time:new Date().toLocaleString('ar-SA')
+      time:new Date().toLocaleString("ar-SA")
     });
+
+    const key = result.level === "high" ? "high" :
+                result.level === "medium" ? "medium" : "low";
+    counts.total++;
+    counts[key]++;
     renderHistory();
+    renderStats();
   }
-  resultEl.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function renderStats() {
+  $("total").textContent = counts.total;
+  $("highCount").textContent = counts.high;
+  $("mediumCount").textContent = counts.medium;
+  $("lowCount").textContent = counts.low;
 }
 
 function renderHistory() {
-  const list = $('historyList');
-  if (!historyItems.length) {
-    list.innerHTML = '<p class="muted">ما فيه تحليلات حتى الآن.</p>';
-    return;
-  }
-  list.innerHTML = historyItems.map(item => `
-    <div class="history-item">
-      <p>${escapeHtml(item.message)}</p>
-      <small>التصنيف التقديري: ${escapeHtml(item.risk)} · ${escapeHtml(item.time)}</small>
-    </div>`).join('');
+  $("history").innerHTML = history.length
+    ? history.map(item => `
+      <div class="history-item">
+        <strong>${escapeHTML(item.risk)}</strong>
+        <p>${escapeHTML(item.message)}</p>
+        <small class="muted">${escapeHTML(item.time)}</small>
+        <p class="muted">${escapeHTML(item.warnings || "لا توجد مؤشرات مطابقة")}</p>
+      </div>
+    `).join("")
+    : '<p class="muted">لم تُحلّل أي رسالة بعد.</p>';
 }
 
-$('analyze').addEventListener('click', () => {
-  const text = $('message').value;
-  if (!text.trim()) {
-    $('message').focus();
-    renderResult('', analyze(''));
+examples.forEach((example,index) => {
+  const button = document.createElement("button");
+  button.className = "sample";
+  button.innerHTML = `${example.name}<small>${example.hint}</small>`;
+  button.addEventListener("click", () => {
+    $("message").value = example.text;
+    renderResult(example.text, analyze(example.text));
+  });
+  $("samples").appendChild(button);
+});
+
+$("analyze").addEventListener("click", () => {
+  const text = $("message").value.trim();
+  if (!text) {
+    alert("اكتبي نص الرسالة أولًا.");
     return;
   }
   renderResult(text, analyze(text));
 });
 
-$('sampleGrid').addEventListener('click', event => {
-  const button = event.target.closest('[data-sample]');
-  if (!button) return;
-  $('message').value = sampleMessages[Number(button.dataset.sample)];
-  renderResult($('message').value, analyze($('message').value));
+$("clear").addEventListener("click", () => {
+  $("message").value = "";
+  $("result").style.display = "none";
+  $("message").focus();
 });
 
-$('clear').addEventListener('click', () => {
-  $('message').value = '';
-  $('result').style.display = 'none';
-  $('message').focus();
+$("sensitivity").addEventListener("change", () => {
+  const text = $("message").value.trim();
+  if (text) renderResult(text, analyze(text), false);
 });
 
-$('clearHistory').addEventListener('click', () => {
-  historyItems.length = 0;
+$("type").addEventListener("change", () => {
+  const text = $("message").value.trim();
+  if (text) renderResult(text, analyze(text), false);
+});
+
+$("copy").addEventListener("click", async () => {
+  const text = $("message").value.trim();
+  if (!text) {
+    alert("اكتبي رسالة وحلّليها أولًا.");
+    return;
+  }
+
+  const result = analyze(text);
+  const report =
+    `تقرير أمان AI\n` +
+    `الرسالة: ${text}\n` +
+    `التصنيف التقديري: ${result.risk}\n` +
+    `المؤشرات: ${result.warnings.join("، ") || "لا توجد مؤشرات مطابقة"}\n` +
+    `النصيحة: ${result.advice}\n` +
+    `ملاحظة: نتيجة أولية وليست حكمًا مؤكدًا.`;
+
+  try {
+    await navigator.clipboard.writeText(report);
+    alert("تم نسخ التقرير.");
+  } catch {
+    const temp = document.createElement("textarea");
+    temp.value = report;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    temp.remove();
+    alert("تم تجهيز التقرير للنسخ.");
+  }
+});
+
+$("clearHistory").addEventListener("click", () => {
+  history.length = 0;
+  counts = {total:0, high:0, medium:0, low:0};
   renderHistory();
+  renderStats();
 });
 
-$('export').addEventListener('click', () => {
-  if (!historyItems.length) {
-    alert('حلّلي رسالة واحدة على الأقل أولًا.');
+$("export").addEventListener("click", () => {
+  if (!history.length) {
+    alert("حلّلي رسالة واحدة على الأقل أولًا.");
     return;
   }
 
   const rows = [
-    ['الرسالة','مستوى الخطورة التقديري','المؤشرات','النصيحة','الوقت'],
-    ...historyItems.map(item => [
+    ["الرسالة","التصنيف التقديري","المؤشرات","النصيحة","الوقت"],
+    ...history.map(item => [
       item.message,item.risk,item.warnings,item.advice,item.time
     ])
   ];
-  const csv = '\ufeff' + rows.map(row =>
-    row.map(value => '"' + String(value).replace(/"/g,'""') + '"').join(',')
-  ).join('\r\n');
 
-  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const csv = "\uFEFF" + rows.map(row =>
+    row.map(value => '"' + String(value).replace(/"/g,'""') + '"').join(",")
+  ).join("\r\n");
+
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = url;
-  link.download = 'Aman_AI_Results.csv';
+  link.download = "Aman_AI_Results.csv";
   link.click();
   URL.revokeObjectURL(url);
 });
